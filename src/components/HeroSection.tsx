@@ -1,10 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, MessageCircle, ChevronDown, Star, Home, Award, Users } from 'lucide-react'
+import { Phone, MessageCircle, ChevronDown, Star, Award, Users } from 'lucide-react'
 import { MagneticButton } from '@/components/MagneticButton'
 
 const stats = [
-  { icon: Home, value: '200+', label: 'Imóveis Vendidos' },
   { icon: Star, value: '20+', label: 'Anos de Experiência' },
   { icon: Users, value: '98%', label: 'Clientes Satisfeitos' },
   { icon: Award, value: 'CENTURION', label: 'Top Producer' },
@@ -225,7 +224,7 @@ export function HeroSection() {
           style={{ paddingBottom: '0' }}
         >
           <div
-            className="grid grid-cols-2 md:grid-cols-4 rounded-t-3xl overflow-hidden"
+            className="grid grid-cols-3 rounded-t-3xl overflow-hidden"
             style={{
               background: 'rgba(255,255,255,0.04)',
               backdropFilter: 'blur(20px)',
@@ -267,6 +266,9 @@ export function HeroSection() {
         </span>
         <ChevronDown className="size-5 text-white/40" />
       </motion.div>
+
+      {/* Smooth fade to white next section */}
+      <div className="hero-fade-bottom" aria-hidden="true" />
     </section>
   )
 }
