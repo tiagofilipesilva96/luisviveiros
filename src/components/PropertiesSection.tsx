@@ -9,10 +9,11 @@ function PropertyCard({ property, index }: { property: Property; index: number }
   const [hovered, setHovered] = useState(false)
 
   return (
-    <motion.a
-      href={property.url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <motion.div
+      role="link"
+      tabIndex={0}
+      onClick={() => window.open(property.url, '_blank', 'noopener,noreferrer')}
+      onKeyDown={(e) => { if (e.key === 'Enter') window.open(property.url, '_blank', 'noopener,noreferrer') }}
       className="reveal property-card rounded-3xl overflow-hidden bg-white border cursor-pointer block"
       style={{ borderColor: 'oklch(0.92 0 0)' }}
       initial={{ opacity: 0, y: 40 }}
@@ -116,7 +117,7 @@ function PropertyCard({ property, index }: { property: Property; index: number }
           </a>
         </div>
       </div>
-    </motion.a>
+    </motion.div>
   )
 }
 
