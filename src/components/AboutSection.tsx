@@ -4,11 +4,9 @@ import { CheckCircle2, Phone, MessageCircle } from 'lucide-react'
 import { MagneticButton } from '@/components/MagneticButton'
 
 const achievements = [
-  'Mais de 200 propriedades vendidas com sucesso',
   '20+ anos de experiência no mercado português',
   'Especialista nos Açores, com profundo conhecimento da região',
   'Consultor certificado Century 21 — CENTURION Producer',
-  'Avaliações 5 estrelas de mais de 150 clientes',
   'Parceiro de referência em investimento imobiliário',
 ]
 
@@ -95,7 +93,7 @@ export function AboutSection() {
                   </motion.div>
                 </motion.div>
 
-                {/* Floating card */}
+                {/* Floating card — agora estático (sem animação ir-e-voltar) */}
                 <motion.div
                   className="absolute -right-4 top-12 glass-card rounded-2xl p-5 shadow-xl hidden lg:block"
                   style={{
@@ -103,10 +101,9 @@ export function AboutSection() {
                     boxShadow: '0 20px 50px rgba(0,0,0,0.12)',
                     border: '1px solid oklch(0.92 0.02 85)',
                   }}
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  initial={{ opacity: 0, scale: 0 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
                   viewport={{ once: true }}
                 >
                   <div className="flex items-center gap-3 mb-3">
