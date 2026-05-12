@@ -117,7 +117,7 @@ function PropertyCard({ property, index }: { property: Property; index: number }
           </a>
         </div>
       </div>
-    </motion.a>
+    </motion.div>
   )
 }
 
