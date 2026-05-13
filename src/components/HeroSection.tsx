@@ -62,13 +62,13 @@ export function HeroSection() {
       {/* Background Image with Parallax */}
       <div ref={parallaxRef} className="absolute inset-0 will-change-transform">
         <img
-          src="https://jornaleconomico.sapo.pt/wp-content/themes/yootheme/cache/64/leitor_5d7ab5c671dfb_casa-644a76b1.png"
+          src="/luis-viveiros-hero.webp"
           alt="Luís Viveiros - Consultor Imobiliário"
           className="w-full h-full object-cover object-top"
           loading="eager"
           fetchPriority="high"
+          decoding="async"
           style={{ minHeight: '110%' }}
-          sizes="100vw"
         />
         {/* Sophisticated gradient overlay */}
         <motion.div

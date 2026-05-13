@@ -2,7 +2,7 @@
 <html lang="pt">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luís Viveiros — Consultor Imobiliário · Century 21 Açores</title>
     <meta name="description" content="Luís Viveiros, consultor imobiliário Centurion Top Producer da Century 21 Azor nos Açores. Mais de 20 anos de experiência em imobiliário em São Miguel, Flores e restantes ilhas." />
@@ -10,6 +10,15 @@
     <meta property="og:description" content="Especialista no mercado imobiliário dos Açores. Consultor Centurion Top Producer." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Preload LCP hero image -->
+    <link rel="preload" as="image" href="/luis-viveiros-hero.webp" fetchpriority="high" />
+
+    <!-- Preconnect to external image CDNs -->
+    <link rel="preconnect" href="https://images.century21.pt" crossorigin />
+    <link rel="dns-prefetch" href="https://images.century21.pt" />
+    <link rel="preconnect" href="https://brumjtydtlxhooqrrsch.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://brumjtydtlxhooqrrsch.supabase.co" />
   </head>
   <body>
     <div id="root"></div>
