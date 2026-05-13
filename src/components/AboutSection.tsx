@@ -62,13 +62,11 @@ export function AboutSection() {
                   transition={{ duration: 0.3 }}
                 >
                   <img
-                    src="/luis-profile.webp"
+                    src="https://brumjtydtlxhooqrrsch.supabase.co/storage/v1/object/public/avatars/profile-photo_1d70f6bb-b9cb-4614-9bfb-120f1604ec34.jpg"
                     alt="Luís Viveiros - Consultor Imobiliário Century 21"
                     className="w-full h-full object-cover object-top"
                     loading="lazy"
                     decoding="async"
-                    width={800}
-                    height={1000}
                   />
                   {/* Gradient at bottom */}
                   <div
