@@ -44,7 +44,6 @@ export function Navigation() {
         <button
           onClick={() => handleNavClick("#inicio")}
           className="flex items-center gap-3 group"
-          aria-label="Luís Viveiros - Ir para o início"
         >
           <div className="flex flex-col">
             <span
@@ -105,12 +104,10 @@ export function Navigation() {
         {/* Mobile Menu Toggle */}
         <button
           className={cn(
-            "md:hidden p-2 rounded-lg transition-colors min-h-11 min-w-11",
+            "md:hidden p-2 rounded-lg transition-colors",
             scrolled ? "text-foreground hover:bg-accent" : "text-white hover:bg-white/10"
           )}
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={menuOpen}
         >
           {menuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>

@@ -24,7 +24,7 @@ export function Footer() {
                 Consultor Imobiliário
               </p>
             </div>
-            <p className="text-white/75 text-sm leading-relaxed max-w-sm mb-6">
+            <p className="text-white/50 text-sm leading-relaxed max-w-sm mb-6">
               Especialista no mercado imobiliário português com mais de 15 anos
               de experiência. Integrado na Century 21, a maior rede imobiliária
               do mundo.
@@ -33,14 +33,14 @@ export function Footer() {
             {/* Social links */}
             <div className="flex gap-3">
               {[
-                { label: "IG", name: "Instagram", href: "#" },
-                { label: "FB", name: "Facebook", href: "#" },
-                { label: "IN", name: "LinkedIn", href: "#" },
+                { label: "IG", href: "#" },
+                { label: "FB", href: "#" },
+                { label: "IN", href: "#" },
               ].map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  aria-label={social.name}
+                  aria-label={social.label}
                   className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105"
                   style={{
                     background: "rgba(255,255,255,0.05)",
@@ -84,7 +84,7 @@ export function Footer() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="block text-sm text-white/75 transition-colors hover:text-white"
+                  className="block text-sm text-white/50 transition-colors hover:text-white"
                   onClick={(e) => {
                     e.preventDefault()
                     const el = document.querySelector(link.href)
@@ -108,7 +108,7 @@ export function Footer() {
             <div className="space-y-4">
               <a
                 href="tel:911726049"
-                className="flex items-center gap-3 text-sm text-white/75 hover:text-white transition-colors group"
+                className="flex items-center gap-3 text-sm text-white/50 hover:text-white transition-colors group"
               >
                 <div
                   className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
@@ -122,7 +122,7 @@ export function Footer() {
                 href="https://wa.me/351911726049"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-white/75 hover:text-white transition-colors"
+                className="flex items-center gap-3 text-sm text-white/50 hover:text-white transition-colors"
               >
                 <div
                   className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
@@ -132,7 +132,7 @@ export function Footer() {
                 </div>
                 WhatsApp
               </a>
-              <div className="flex items-center gap-3 text-sm text-white/75">
+              <div className="flex items-center gap-3 text-sm text-white/50">
                 <div
                   className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                   style={{ background: "rgba(180,140,60,0.1)" }}
@@ -151,7 +151,7 @@ export function Footer() {
                 border: "1px solid rgba(180,140,60,0.15)",
               }}
             >
-              <p className="text-xs text-white/75">Membro Oficial</p>
+              <p className="text-xs text-white/40">Membro Oficial</p>
               <p
                 className="text-sm font-bold"
                 style={{ color: "oklch(0.85 0.1 85)" }}
@@ -167,11 +167,11 @@ export function Footer() {
           className="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderColor: "rgba(255,255,255,0.05)" }}
         >
-          <p className="text-white/75 text-xs">
+          <p className="text-white/30 text-xs">
             © {currentYear} Luís Viveiros · Consultor Imobiliário · Century 21.
             Todos os direitos reservados.
           </p>
-          <p className="text-white/75 text-xs">
+          <p className="text-white/20 text-xs">
             Mediação Imobiliária Autorizada · AMI n.º XXXXX
           </p>
         </div>

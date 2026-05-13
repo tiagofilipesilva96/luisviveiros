@@ -103,7 +103,7 @@ export function TestimonialsSection() {
             O que dizem{" "}
             <span className="gold-gradient">os meus clientes</span>
           </h2>
-          <p className="text-white/75 text-lg max-w-xl mx-auto">
+          <p className="text-white/50 text-lg max-w-xl mx-auto">
             Mais de 200 famílias e investidores que confiaram em mim para
             encontrar o imóvel perfeito.
           </p>
@@ -159,7 +159,7 @@ export function TestimonialsSection() {
               </div>
               <div>
                 <p className="text-white font-semibold">{testimonials[active].name}</p>
-                <p className="text-white/75 text-sm">{testimonials[active].role}</p>
+                <p className="text-white/50 text-sm">{testimonials[active].role}</p>
               </div>
               <div className="ml-auto">
                 <span
@@ -264,7 +264,7 @@ export function TestimonialsSection() {
                   {t.avatar}
                 </div>
                 <p className="text-white text-xs font-medium truncate">{t.name.split(" ")[0]}</p>
-                <p className="text-white/75 text-xs truncate">{t.role.split("·")[0].trim()}</p>
+                <p className="text-white/40 text-xs truncate">{t.role.split("·")[0].trim()}</p>
               </button>
             ))}
           </div>

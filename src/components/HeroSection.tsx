@@ -244,7 +244,7 @@ export function HeroSection() {
                   style={{ color: 'oklch(0.85 0.1 85)' }}
                 />
                 <span className="text-2xl font-bold text-white">{stat.value}</span>
-                <span className="text-xs text-white/75 text-center mt-0.5">{stat.label}</span>
+                <span className="text-xs text-white/50 text-center mt-0.5">{stat.label}</span>
               </motion.div>
             ))}
           </div>
@@ -257,10 +257,10 @@ export function HeroSection() {
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <span className="text-white/75 text-xs tracking-widest uppercase rotate-90 mb-2">
+        <span className="text-white/40 text-xs tracking-widest uppercase rotate-90 mb-2">
           Scroll
         </span>
-        <ChevronDown className="size-5 text-white/75" />
+        <ChevronDown className="size-5 text-white/40" />
       </motion.div>
 
       {/* Smooth fade to white next section */}
