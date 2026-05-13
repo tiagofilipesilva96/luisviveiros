@@ -113,7 +113,7 @@ export function TestimonialsSection() {
             <span className="gold-gradient">os meus clientes</span>
           </h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto">
-            Mais de 200 famílias e investidores que confiaram em mim para
+            Centenas de famílias e investidores que confiaram em mim para
             encontrar o imóvel perfeito.
           </p>
         </div>
