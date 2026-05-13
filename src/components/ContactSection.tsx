@@ -111,7 +111,7 @@ export function ContactSection() {
             <h3 className="font-semibold text-foreground mb-2">Email</h3>
             <p className="text-muted-foreground text-sm mb-3">Resposta em 24h</p>
             <span className="text-sm font-semibold" style={{ color: "oklch(0.55 0.1 75)" }}>
-              century21.pt
+              luis.viveiros@century21.pt
             </span>
           </a>
         </div>
