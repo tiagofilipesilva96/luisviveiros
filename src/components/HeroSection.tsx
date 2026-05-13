@@ -13,12 +13,6 @@ export function HeroSection() {
   const parallaxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Prefetch next image for smooth scroll
-    const img = new Image()
-    img.src = '/property-1.webp'
-  }, [])
-
-  useEffect(() => {
     let animationFrameId: number
     const handleScroll = () => {
       if (parallaxRef.current) {
@@ -62,13 +56,15 @@ export function HeroSection() {
       {/* Background Image with Parallax */}
       <div ref={parallaxRef} className="absolute inset-0 will-change-transform">
         <img
-          src="https://jornaleconomico.sapo.pt/wp-content/themes/yootheme/cache/64/leitor_5d7ab5c671dfb_casa-644a76b1.png"
+          src="/luis-viveiros-hero.webp"
           alt="Luís Viveiros - Consultor Imobiliário"
           className="w-full h-full object-cover object-top"
           loading="eager"
           fetchPriority="high"
+          decoding="async"
+          width={1600}
+          height={900}
           style={{ minHeight: '110%' }}
-          sizes="100vw"
         />
         {/* Sophisticated gradient overlay */}
         <motion.div
