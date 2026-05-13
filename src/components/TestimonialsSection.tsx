@@ -92,7 +92,7 @@ export function TestimonialsSection() {
     <section
       id="testemunhos"
       ref={sectionRef}
-      className="py-28 overflow-hidden"
+      className="py-28 overflow-hidden cv-auto"
       style={{ background: "oklch(0.08 0 0)" }}
     >
       <div className="max-w-7xl mx-auto px-6">

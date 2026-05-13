@@ -37,7 +37,7 @@ export function AboutSection() {
     <section
       id="sobre"
       ref={sectionRef}
-      className="py-28 bg-white overflow-hidden cv-auto"
+      className="relative py-28 bg-white overflow-hidden cv-auto"
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

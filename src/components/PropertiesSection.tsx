@@ -5,6 +5,15 @@ import { MapPin, Bed, Bath, Square, ArrowRight, Phone, MessageCircle } from 'luc
 import { MagneticButton } from '@/components/MagneticButton'
 import { featuredProperties, type Property } from '@/data/properties'
 
+const spring = { type: 'spring' as const, stiffness: 60, damping: 13 }
+
+const cardFrom = (i: number) => {
+  const col = i % 3
+  if (col === 0) return { x: -100, opacity: 0, rotate: -4 }
+  if (col === 2) return { x: 100, opacity: 0, rotate: 4 }
+  return { y: 90, opacity: 0, scale: 0.84 }
+}
+
 function PropertyCard({ property, index }: { property: Property; index: number }) {
   const [hovered, setHovered] = useState(false)
 
@@ -14,15 +23,14 @@ function PropertyCard({ property, index }: { property: Property; index: number }
       tabIndex={0}
       onClick={() => window.open(property.url, '_blank', 'noopener,noreferrer')}
       onKeyDown={(e) => { if (e.key === 'Enter') window.open(property.url, '_blank', 'noopener,noreferrer') }}
-      className="reveal property-card rounded-3xl overflow-hidden bg-white border cursor-pointer block"
+      className="property-card rounded-3xl overflow-hidden bg-white border cursor-pointer block"
       style={{ borderColor: 'oklch(0.92 0 0)' }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.06, duration: 0.5 }}
-      viewport={{ once: true, margin: '-50px' }}
+      initial={cardFrom(index)}
+      whileInView={{ x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 }}
+      transition={{ ...spring, delay: index * 0.09 }}
+      viewport={{ once: true, margin: '-60px' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      whileHover={{ y: -6 }}
       whileTap={{ scale: 0.98 }}
     >
       <div className="relative overflow-hidden aspect-[4/3]">
@@ -30,8 +38,8 @@ function PropertyCard({ property, index }: { property: Property; index: number }
           src={property.image}
           alt={property.title}
           className="w-full h-full object-cover"
-          animate={{ scale: hovered ? 1.06 : 1 }}
-          transition={{ duration: 0.3 }}
+          animate={{ scale: hovered ? 1.07 : 1 }}
+          transition={{ duration: 0.4 }}
           loading="lazy"
           decoding="async"
         />
@@ -123,15 +131,14 @@ function PropertyCard({ property, index }: { property: Property; index: number }
 
 export function PropertiesSection() {
   return (
-    <section id="imoveis" className="py-20 md:py-24 -mt-8 md:-mt-12" style={{ background: 'oklch(0.98 0.005 85)' }}>
+    <section id="imoveis" className="relative py-20 md:py-24 -mt-8 md:-mt-12 overflow-hidden cv-auto" style={{ background: 'oklch(0.98 0.005 85)' }}>
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-6">
           <motion.div
-            className="reveal"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, x: -80, rotate: -2 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 65, damping: 14 }}
+            viewport={{ once: true, margin: '-80px' }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5 border"
               style={{ background: 'oklch(0.98 0.02 85)', borderColor: 'oklch(0.85 0.08 85)', color: 'oklch(0.55 0.1 75)' }}>
@@ -146,11 +153,11 @@ export function PropertiesSection() {
           </motion.div>
 
           <motion.div
-            className="reveal shrink-0"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, x: 80, rotate: 2 }}
+            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 65, damping: 14, delay: 0.12 }}
+            viewport={{ once: true, margin: '-80px' }}
+            className="shrink-0"
           >
             <Link to="/imoveis" className="block">
               <MagneticButton variant="dark">
