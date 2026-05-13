@@ -1,21 +1,18 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import { mergeConfig } from "vite";
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
-const lovableConfig = defineConfig({
-  tanstackStart: {
-    server: { entry: "server" },
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+    tsconfigPaths(),
+  ],
+  server: {
+    host: '0.0.0.0',
+    port: 5000,
+    strictPort: true,
+    allowedHosts: true,
   },
-  cloudflare: false,
-});
-
-export default async (env: Parameters<typeof mergeConfig>[0]) => {
-  const base = typeof lovableConfig === "function" ? await lovableConfig(env as any) : lovableConfig;
-  return mergeConfig(base as any, {
-    server: {
-      host: "0.0.0.0",
-      port: 5000,
-      strictPort: true,
-      allowedHosts: true,
-    },
-  });
-};
+})

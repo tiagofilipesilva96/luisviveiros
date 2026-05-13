@@ -25,7 +25,7 @@ export function Footer() {
               </p>
             </div>
             <p className="text-white/50 text-sm leading-relaxed max-w-sm mb-6">
-              Especialista no mercado imobiliário português com mais de 15 anos
+              Especialista no mercado imobiliário português com mais de 20 anos
               de experiência. Integrado na Century 21, a maior rede imobiliária
               do mundo.
             </p>

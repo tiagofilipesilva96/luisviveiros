@@ -7,14 +7,6 @@ import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
 
 export const Route = createFileRoute('/imoveis')({
-  head: () => ({
-    meta: [
-      { title: 'Todos os Imóveis — Luís Viveiros · Century 21 Açores' },
-      { name: 'description', content: 'Portfólio completo de imóveis nos Açores do consultor Luís Viveiros — Century 21 Azor. Apartamentos, moradias, terrenos e investimento.' },
-      { property: 'og:title', content: 'Imóveis nos Açores — Luís Viveiros · Century 21' },
-      { property: 'og:description', content: 'Portfólio real de imóveis nos Açores.' },
-    ],
-  }),
   component: ImoveisPage,
 })
 
