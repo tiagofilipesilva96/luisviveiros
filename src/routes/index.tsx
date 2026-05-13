@@ -4,6 +4,7 @@ import { HeroSection } from '@/components/HeroSection'
 import { AboutSection } from '@/components/AboutSection'
 import { ServicesSection } from '@/components/ServicesSection'
 import { PropertiesSection } from '@/components/PropertiesSection'
+import { ConsultaSection } from '@/components/ConsultaSection'
 import { TestimonialsSection } from '@/components/TestimonialsSection'
 import { ContactSection } from '@/components/ContactSection'
 import { Footer } from '@/components/Footer'
@@ -27,9 +28,10 @@ function Index() {
       <Navigation />
       <main>
         <HeroSection />
-        <PropertiesSection />
         <AboutSection />
         <ServicesSection />
+        <PropertiesSection />
+        <ConsultaSection />
         <TestimonialsSection />
         <ContactSection />
       </main>
