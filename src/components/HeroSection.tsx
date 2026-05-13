@@ -124,7 +124,7 @@ export function HeroSection() {
               transition={{ duration: 2, repeat: Infinity }}
               style={{ background: 'oklch(0.85 0.1 85)' }}
             />
-            Century 21 Azor · Açores · Portugal
+            Century 21 · Açores · Portugal
           </motion.div>
 
           {/* Headline */}

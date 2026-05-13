@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import {
   Search,
@@ -8,7 +7,6 @@ import {
   MapPin,
   ShieldCheck,
 } from 'lucide-react'
-import { MagneticButton } from '@/components/MagneticButton'
 
 const services = [
   {
@@ -16,70 +14,58 @@ const services = [
     title: 'Pesquisa Personalizada',
     description:
       'Identifico propriedades que correspondem exatamente ao seu perfil, necessidades e orçamento — poupando-lhe tempo e esforço.',
+    from: { x: -80, y: -40, rotate: -6, opacity: 0 },
   },
   {
     icon: TrendingUp,
     title: 'Avaliação de Mercado',
     description:
       'Análise profunda do mercado imobiliário em tempo real para garantir que compra ou vende ao melhor preço justo.',
+    from: { x: 0, y: -80, rotate: 0, opacity: 0, scale: 0.82 },
   },
   {
     icon: Handshake,
     title: 'Negociação Expert',
     description:
       'Mais de 20 anos de experiência em negociação imobiliária ao seu serviço para conquistar as melhores condições.',
+    from: { x: 80, y: -40, rotate: 6, opacity: 0 },
   },
   {
     icon: FileText,
     title: 'Apoio Jurídico',
     description:
       'Acompanho todo o processo documental e legal, da proposta à escritura, com total transparência.',
+    from: { x: -80, y: 40, rotate: 6, opacity: 0 },
   },
   {
     icon: MapPin,
     title: 'Conhecimento Local',
     description:
       'Especialista nos Açores com conhecimento profundo de cada ilha e oportunidades de investimento imobiliário.',
+    from: { x: 0, y: 80, rotate: 0, opacity: 0, scale: 0.82 },
   },
   {
     icon: ShieldCheck,
     title: 'Confiança Certificada',
     description:
       'Consultor certificado pela Century 21 com histórico comprovado de excelência e satisfação dos clientes.',
+    from: { x: 80, y: 40, rotate: -6, opacity: 0 },
   },
 ]
 
+const spring = { type: 'spring' as const, stiffness: 65, damping: 14 }
+
 export function ServicesSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
-        })
-      },
-      { threshold: 0.15 }
-    )
-
-    const els = sectionRef.current?.querySelectorAll('.reveal')
-    els?.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section id="servicos" ref={sectionRef} className="py-28 bg-white">
+    <section id="servicos" className="py-28 bg-white cv-auto overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-20 reveal"
-          initial={{ opacity: 0, y: 40 }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true, margin: '-80px' }}
         >
           <div
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6 border"
@@ -103,38 +89,36 @@ export function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Services Grid — each card assembles from its own direction */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {services.map((service, i) => (
             <motion.div
               key={i}
-              className="reveal group"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.08, duration: 0.6 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8 }}
+              initial={service.from}
+              whileInView={{ x: 0, y: 0, rotate: 0, opacity: 1, scale: 1 }}
+              transition={{ ...spring, delay: i * 0.07 }}
+              viewport={{ once: true, margin: '-60px' }}
+              whileHover={{ y: -10, scale: 1.02 }}
             >
               <motion.div
-                className="h-full p-5 rounded-2xl border transition-all duration-300 cursor-default hover:border-opacity-60"
+                className="h-full p-5 rounded-2xl border transition-colors duration-300 cursor-default"
                 style={{
                   borderColor: 'oklch(0.92 0.02 85)',
                   background: 'white',
                 }}
                 whileHover={{
-                  boxShadow: '0 16px 40px rgba(0,0,0,0.06), 0 4px 12px rgba(180,140,60,0.12)',
+                  boxShadow: '0 20px 50px rgba(0,0,0,0.08), 0 4px 16px rgba(180,140,60,0.15)',
                   borderColor: 'oklch(0.82 0.09 85)',
                 }}
               >
-                {/* Icon */}
                 <motion.div
                   className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                   style={{
                     background:
                       'linear-gradient(135deg, oklch(0.95 0.04 85), oklch(0.9 0.07 82))',
                   }}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: 'spring', stiffness: 400 }}
+                  whileHover={{ scale: 1.15, rotate: 8 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 12 }}
                 >
                   <service.icon
                     className="size-4"
@@ -149,15 +133,15 @@ export function ServicesSection() {
                   {service.description}
                 </p>
 
-                {/* Gold accent line */}
                 <motion.div
-                  className="mt-4 w-8 h-0.5 rounded-full"
+                  className="mt-4 h-0.5 rounded-full"
                   style={{
                     background:
                       'linear-gradient(to right, oklch(0.75 0.12 85), transparent)',
+                    width: '2rem',
                   }}
                   whileHover={{ width: '100%' }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.35 }}
                 />
               </motion.div>
             </motion.div>
