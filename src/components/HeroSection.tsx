@@ -62,23 +62,29 @@ export function HeroSection() {
       {/* Background Image with Parallax */}
       <div ref={parallaxRef} className="absolute inset-0 will-change-transform">
         <img
-          src="/luis-viveiros-hero.webp"
-          alt="Luís Viveiros - Consultor Imobiliário"
-          className="w-full h-full object-cover object-top"
+          src="/hero-luxury.webp"
+          alt="Imóvel de luxo nos Açores"
+          className="w-full h-full object-cover object-center"
           loading="eager"
           fetchPriority="high"
           decoding="async"
           style={{ minHeight: '110%' }}
         />
-        {/* Sophisticated gradient overlay */}
-        <motion.div
+        {/* Dark gradient overlay — instant, no animation */}
+        <div
           className="absolute inset-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
           style={{
             background:
-              'linear-gradient(105deg, rgba(5,5,5,0.88) 0%, rgba(5,5,5,0.65) 40%, rgba(5,5,5,0.4) 70%, rgba(5,5,5,0.3) 100%)',
+              'linear-gradient(105deg, rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.60) 45%, rgba(5,5,5,0.35) 75%, rgba(5,5,5,0.20) 100%)',
+          }}
+        />
+        {/* Bottom fade to white — matches section below */}
+        <div
+          className="absolute inset-x-0 bottom-0"
+          style={{
+            height: '260px',
+            background:
+              'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,1) 100%)',
           }}
         />
         {/* Gold accent overlay */}
@@ -86,7 +92,7 @@ export function HeroSection() {
           className="absolute inset-0"
           style={{
             background:
-              'radial-gradient(ellipse at 30% 50%, rgba(180,140,60,0.08) 0%, transparent 60%)',
+              'radial-gradient(ellipse at 25% 55%, rgba(180,140,60,0.10) 0%, transparent 55%)',
           }}
         />
       </div>
