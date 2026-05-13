@@ -78,15 +78,6 @@ export function HeroSection() {
               'linear-gradient(105deg, rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.60) 45%, rgba(5,5,5,0.35) 75%, rgba(5,5,5,0.20) 100%)',
           }}
         />
-        {/* Bottom fade to white — matches section below */}
-        <div
-          className="absolute inset-x-0 bottom-0"
-          style={{
-            height: '260px',
-            background:
-              'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.6) 60%, rgba(255,255,255,1) 100%)',
-          }}
-        />
         {/* Gold accent overlay */}
         <div
           className="absolute inset-0"
@@ -273,8 +264,6 @@ export function HeroSection() {
         <ChevronDown className="size-5 text-white/40" />
       </motion.div>
 
-      {/* Smooth fade to white next section */}
-      <div className="hero-fade-bottom" aria-hidden="true" />
     </section>
   )
 }

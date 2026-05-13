@@ -116,19 +116,19 @@ export function ServicesSection() {
               whileHover={{ y: -8 }}
             >
               <motion.div
-                className="h-full p-8 rounded-3xl border transition-all duration-300 cursor-default hover:border-opacity-60"
+                className="h-full p-5 rounded-2xl border transition-all duration-300 cursor-default hover:border-opacity-60"
                 style={{
                   borderColor: 'oklch(0.92 0.02 85)',
                   background: 'white',
                 }}
                 whileHover={{
-                  boxShadow: '0 20px 50px rgba(0,0,0,0.06), 0 4px 16px rgba(180,140,60,0.12)',
+                  boxShadow: '0 16px 40px rgba(0,0,0,0.06), 0 4px 12px rgba(180,140,60,0.12)',
                   borderColor: 'oklch(0.82 0.09 85)',
                 }}
               >
                 {/* Icon */}
                 <motion.div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                   style={{
                     background:
                       'linear-gradient(135deg, oklch(0.95 0.04 85), oklch(0.9 0.07 82))',
@@ -137,21 +137,21 @@ export function ServicesSection() {
                   transition={{ type: 'spring', stiffness: 400 }}
                 >
                   <service.icon
-                    className="size-6"
+                    className="size-4"
                     style={{ color: 'oklch(0.55 0.1 75)' }}
                   />
                 </motion.div>
 
-                <h3 className="text-lg font-semibold text-foreground mb-3">
+                <h3 className="text-sm font-semibold text-foreground mb-2">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <p className="text-muted-foreground text-xs leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Gold accent line */}
                 <motion.div
-                  className="mt-6 w-10 h-0.5 rounded-full"
+                  className="mt-4 w-8 h-0.5 rounded-full"
                   style={{
                     background:
                       'linear-gradient(to right, oklch(0.75 0.12 85), transparent)',

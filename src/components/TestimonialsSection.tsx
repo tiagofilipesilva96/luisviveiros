@@ -4,44 +4,54 @@ import { cn } from "@/lib/utils"
 
 const testimonials = [
   {
-    name: "Ana Sofia Ferreira",
-    role: "Compradora · Açores",
-    avatar: "AS",
-    rating: 5,
-    text: "O Luís foi absolutamente excecional em todo o processo de compra do nosso apartamento nos Açores. A sua disponibilidade, conhecimento da região e paciência são únicos. Recomendo a 100%.",
-    property: "Apartamento T3 · Ponta Delgada",
+    name: "Ana Figueira",
+    avatar: "AF",
+    text: "Um muito obrigada ao Luís Viveiros pelo excelente trabalho no processo de venda da minha moradia em Ponta Delgada. A ética e o profissionalismo definem-no a 100%. Dou-lhe todas as estrelas ...",
   },
   {
-    name: "Pedro & Marta Rodrigues",
-    role: "Compradores · Açores",
-    avatar: "PM",
-    rating: 5,
-    text: "Procurámos durante 6 meses sem encontrar nada. Em 3 semanas com o Luís encontrámos a nossa casa de sonho nos Açores. A sua rede de contactos e expertise são verdadeiramente impressionantes.",
-    property: "Moradia T4 · Furnas",
+    name: "Fátima Ramos",
+    avatar: "FR",
+    text: "Vendi e comprei casa na Century 21, recomendo sobretudo pelo profissionalismo, eficiência e trato, especialmente ao Luís Viveiros pela confiança que transmite, acompanhamento, sensibilidade ...",
   },
   {
-    name: "Carlos Mendonça",
-    role: "Investidor Imobiliário · Açores",
-    avatar: "CM",
-    rating: 5,
-    text: "Já realizei 4 transações com o Luís nos últimos 5 anos nos Açores. É o meu consultor de confiança. Análise de mercado rigorosa, negociação habilidosa e profissionalismo de alto nível.",
-    property: "Portfólio de 4 imóveis",
+    name: "Joachim Holl",
+    avatar: "JH",
+    text: "Estou muito feliz que o Luís Viveiros tenha me ajudado com tanto conhecimento na venda do meu imóvel. (Fotos, site, autoridades, cartório...) O Luís não só é altamente profissional, com...",
   },
   {
-    name: "Isabel Costeira",
-    role: "Vendedora · Açores",
-    avatar: "IC",
-    rating: 5,
-    text: "Vendi o meu apartamento 15% acima do preço de mercado graças à estratégia do Luís nos Açores. A sua capacidade de apresentar e valorizar o imóvel é extraordinária. Muito grata!",
-    property: "Apartamento T2 · Horta",
+    name: "Marco Oliveira",
+    avatar: "MO",
+    text: "Luís Viveiros, parabéns pelo excelente profissionalismo, assim como, pela dedicação ao processo de venda, de 1 a 10 não hesito em atribuir o 10. Century21, descomplicada, mas atribuindo a...",
   },
   {
-    name: "João & Filipa Santos",
-    role: "Compradores · Açores",
-    avatar: "JF",
-    rating: 5,
-    text: "O Luís transformou o que parecia impossível em realidade. Encontrou a nossa villa ideal nos Açores dentro do nosso orçamento. Serviço personalizado e genuíno nos Açores.",
-    property: "Villa T3 · Ribeirinha",
+    name: "Laura Pinto",
+    avatar: "LP",
+    text: "Recomendo o excelente trabalho do Sr. Luís Viveiros, rápido, eficiente e eficaz a encontrar os melhores negócios e com um profissionalismo de excelência. Obrigada Sr. Luís e Century",
+  },
+  {
+    name: "Sandy Ventura",
+    avatar: "SV",
+    text: "Quero deixar um agradecimento especial ao Luís Viveiros, excelente profissional que me ajudou e muito num processo de venda de imóvel complexo e burocrático. Ele tornou a venda possível e tudo fez para...",
+  },
+  {
+    name: "José Alves",
+    avatar: "JA",
+    text: "A nossa experiência com esta agência imobiliária correu da melhor forma. Penso que se deve em muito ao trabalho árduo do senhor Luís Viveiros. Esteve sempre atento e a acompanhar...",
+  },
+  {
+    name: "Micaela Pavão",
+    avatar: "MP",
+    text: "Um muito obrigado à Century21 Azor e em especial ao Luís Viveiros pela rapidez, eficiência e profissionalismo ao longo do processo da venda do nosso imóvel. Não poderíamos estar m...",
+  },
+  {
+    name: "Bruno da Costa",
+    avatar: "BC",
+    text: "Parabéns Luís. Um grande profissional na sua área. Acompanhou com excelência, um processo rápido. Foi fulcral a tua ajuda! Nota máxima.",
+  },
+  {
+    name: "Natalina Coelho",
+    avatar: "NC",
+    text: "Sr. Luís Viveiros com a sua positividade fez-me acreditar que venderia a minha casa e assim aconteceu. Ajudou-me a resolver todas as burocracias. É uma pessoa extraordinária e de...",
   },
 ]
 
@@ -73,7 +83,6 @@ export function TestimonialsSection() {
   const prev = () => goTo((active - 1 + testimonials.length) % testimonials.length)
   const next = () => goTo((active + 1) % testimonials.length)
 
-  // Auto-play
   useEffect(() => {
     const interval = setInterval(next, 6000)
     return () => clearInterval(interval)
@@ -113,7 +122,7 @@ export function TestimonialsSection() {
         <div className="reveal">
           {/* Main testimonial */}
           <div
-            className="relative max-w-4xl mx-auto rounded-3xl p-10 md:p-14 mb-8 transition-all duration-400"
+            className="relative max-w-4xl mx-auto rounded-3xl p-10 md:p-14 mb-8"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(180,140,60,0.15)",
@@ -123,15 +132,13 @@ export function TestimonialsSection() {
               transition: "opacity 0.3s ease, transform 0.3s ease",
             }}
           >
-            {/* Quote icon */}
             <Quote
               className="absolute top-8 right-10 opacity-10 size-20"
               style={{ color: "oklch(0.85 0.1 85)" }}
             />
 
-            {/* Stars */}
             <div className="flex gap-1 mb-6">
-              {Array.from({ length: testimonials[active].rating }).map((_, i) => (
+              {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
                   className="size-5 fill-current"
@@ -140,12 +147,10 @@ export function TestimonialsSection() {
               ))}
             </div>
 
-            {/* Text */}
             <blockquote className="text-xl md:text-2xl text-white/85 leading-relaxed font-light mb-8 italic">
               "{testimonials[active].text}"
             </blockquote>
 
-            {/* Author */}
             <div className="flex items-center gap-4">
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold shrink-0"
@@ -159,19 +164,7 @@ export function TestimonialsSection() {
               </div>
               <div>
                 <p className="text-white font-semibold">{testimonials[active].name}</p>
-                <p className="text-white/50 text-sm">{testimonials[active].role}</p>
-              </div>
-              <div className="ml-auto">
-                <span
-                  className="px-3 py-1 rounded-full text-xs font-medium"
-                  style={{
-                    background: "rgba(180,140,60,0.1)",
-                    border: "1px solid rgba(180,140,60,0.2)",
-                    color: "oklch(0.82 0.09 85)",
-                  }}
-                >
-                  {testimonials[active].property}
-                </span>
+                <p className="text-white/50 text-sm">Cliente · Century 21 Açores</p>
               </div>
             </div>
           </div>
@@ -198,7 +191,6 @@ export function TestimonialsSection() {
               <ChevronLeft className="size-4" />
             </button>
 
-            {/* Dots */}
             <div className="flex gap-2">
               {testimonials.map((_, i) => (
                 <button
@@ -239,13 +231,13 @@ export function TestimonialsSection() {
           </div>
 
           {/* Mini cards */}
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div className="mt-10 grid grid-cols-5 md:grid-cols-10 gap-2">
             {testimonials.map((t, i) => (
               <button
                 key={i}
                 onClick={() => goTo(i)}
                 className={cn(
-                  "p-4 rounded-2xl text-left transition-all duration-300",
+                  "p-3 rounded-xl text-left transition-all duration-300",
                   i === active ? "opacity-100" : "opacity-40 hover:opacity-70"
                 )}
                 style={{
@@ -254,7 +246,7 @@ export function TestimonialsSection() {
                 }}
               >
                 <div
-                  className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold mb-2"
+                  className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mb-1.5 mx-auto"
                   style={{
                     background:
                       "linear-gradient(135deg, oklch(0.85 0.1 85), oklch(0.7 0.13 80))",
@@ -263,8 +255,7 @@ export function TestimonialsSection() {
                 >
                   {t.avatar}
                 </div>
-                <p className="text-white text-xs font-medium truncate">{t.name.split(" ")[0]}</p>
-                <p className="text-white/40 text-xs truncate">{t.role.split("·")[0].trim()}</p>
+                <p className="text-white text-xs font-medium truncate text-center">{t.name.split(" ")[0]}</p>
               </button>
             ))}
           </div>
