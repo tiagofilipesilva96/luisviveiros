@@ -17,9 +17,17 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      // Turn opaque only when the first white block (#servicos) touches the nav bottom
+      const servicos = document.querySelector("#servicos")
+      if (servicos) {
+        const top = servicos.getBoundingClientRect().top
+        setScrolled(top <= 72)
+      } else {
+        setScrolled(window.scrollY > 80)
+      }
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 

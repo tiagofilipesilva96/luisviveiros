@@ -122,7 +122,7 @@ export function TestimonialsSection() {
         <div className="reveal">
           {/* Main testimonial */}
           <div
-            className="relative max-w-4xl mx-auto rounded-3xl p-10 md:p-14 mb-8"
+            className="relative max-w-4xl mx-auto rounded-3xl p-7 md:p-10 mb-8"
             style={{
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(180,140,60,0.15)",
@@ -147,7 +147,7 @@ export function TestimonialsSection() {
               ))}
             </div>
 
-            <blockquote className="text-xl md:text-2xl text-white/85 leading-relaxed font-light mb-8 italic">
+            <blockquote className="text-base md:text-lg text-white/85 leading-relaxed font-light mb-6 italic">
               "{testimonials[active].text}"
             </blockquote>
 

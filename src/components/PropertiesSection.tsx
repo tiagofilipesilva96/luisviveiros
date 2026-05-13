@@ -33,7 +33,7 @@ function PropertyCard({ property, index }: { property: Property; index: number }
       onMouseLeave={() => setHovered(false)}
       whileTap={{ scale: 0.98 }}
     >
-      <div className="relative overflow-hidden aspect-[4/3]">
+      <div className="relative overflow-hidden aspect-[16/10]">
         <motion.img
           src={property.image}
           alt={property.title}
@@ -70,7 +70,7 @@ function PropertyCard({ property, index }: { property: Property; index: number }
         )}
       </div>
 
-      <div className="p-5 sm:p-6">
+      <div className="p-4 sm:p-5">
         <div className="flex items-start justify-between mb-3 gap-3">
           <div className="min-w-0">
             <h3 className="font-semibold text-foreground text-base leading-snug mb-1 line-clamp-2">{property.title}</h3>
