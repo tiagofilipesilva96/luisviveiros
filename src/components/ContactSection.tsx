@@ -59,7 +59,7 @@ export function ContactSection() {
             <h3 className="font-semibold text-white mb-2">WhatsApp</h3>
             <p className="text-white/50 text-sm mb-3">Resposta imediata</p>
             <span className="text-sm font-semibold" style={{ color: "oklch(0.85 0.1 85)" }}>
-              +351 911 726 049
+              911 726 049
             </span>
           </a>
 
