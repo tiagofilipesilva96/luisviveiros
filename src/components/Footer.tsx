@@ -33,14 +33,14 @@ export function Footer() {
             {/* Social links */}
             <div className="flex gap-3">
               {[
-                { label: "IG", href: "#" },
-                { label: "FB", href: "#" },
-                { label: "IN", href: "#" },
+                { label: "IG", name: "Instagram", href: "#" },
+                { label: "FB", name: "Facebook", href: "#" },
+                { label: "IN", name: "LinkedIn", href: "#" },
               ].map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  aria-label={social.label}
+                  aria-label={social.name}
                   className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 hover:scale-105"
                   style={{
                     background: "rgba(255,255,255,0.05)",
