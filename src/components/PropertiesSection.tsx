@@ -34,8 +34,6 @@ function PropertyCard({ property, index }: { property: Property; index: number }
           transition={{ duration: 0.3 }}
           loading="lazy"
           decoding="async"
-          width={800}
-          height={600}
         />
         <motion.div
           className="absolute inset-0"
