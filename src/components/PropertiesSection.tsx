@@ -5,15 +5,7 @@ import { MapPin, Bed, Bath, Square, ArrowRight, Phone, MessageCircle } from 'luc
 import { MagneticButton } from '@/components/MagneticButton'
 import { featuredProperties, type Property } from '@/data/properties'
 
-const spring = { type: 'spring' as const, stiffness: 280, damping: 28, mass: 0.8 }
-
-/* No rotation — purely translate + scale for GPU compositing */
-const cardFrom = (i: number) => {
-  const col = i % 3
-  if (col === 0) return { x: -72, opacity: 0 }
-  if (col === 2) return { x:  72, opacity: 0 }
-  return { y: 72, opacity: 0, scale: 0.88 }
-}
+const ease = { duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] as const }
 
 function PropertyCard({ property, index }: { property: Property; index: number }) {
   const [hovered, setHovered] = useState(false)
@@ -24,30 +16,29 @@ function PropertyCard({ property, index }: { property: Property; index: number }
       tabIndex={0}
       onClick={() => window.open(property.url, '_blank', 'noopener,noreferrer')}
       onKeyDown={(e) => { if (e.key === 'Enter') window.open(property.url, '_blank', 'noopener,noreferrer') }}
-      className="property-card rounded-3xl overflow-hidden bg-white border cursor-pointer block"
+      className="rounded-3xl overflow-hidden bg-white border cursor-pointer transition-shadow duration-500 hover:shadow-[0_16px_48px_rgba(0,0,0,0.09)]"
       style={{ borderColor: 'oklch(0.92 0 0)' }}
-      initial={cardFrom(index)}
-      whileInView={{ x: 0, y: 0, scale: 1, opacity: 1 }}
-      transition={{ ...spring, delay: index * 0.07 }}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ ...ease, delay: index * 0.09 }}
       viewport={{ once: true, margin: '-60px' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.99 }}
     >
       <div className="relative overflow-hidden aspect-[16/10]">
         <motion.img
           src={property.image}
           alt={property.title}
           className="w-full h-full object-cover"
-          animate={{ scale: hovered ? 1.06 : 1 }}
-          transition={{ duration: 0.35 }}
+          animate={{ scale: hovered ? 1.04 : 1 }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
           loading="lazy"
           decoding="async"
         />
-        <motion.div
+        <div
           className="absolute inset-0"
-          animate={{ opacity: hovered ? 1 : 0.4 }}
-          style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)' }}
+          style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%)' }}
         />
         {property.badge && (
           <div className="absolute top-4 left-4">
@@ -63,7 +54,7 @@ function PropertyCard({ property, index }: { property: Property; index: number }
           <div className="absolute top-4 right-4">
             <span
               className="px-3 py-1 rounded-full text-xs font-medium"
-              style={{ background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(8px)', color: 'white', border: '1px solid rgba(255,255,255,0.25)' }}
+              style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
             >
               {property.tag}
             </span>
@@ -124,9 +115,9 @@ export function PropertiesSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-6">
           <motion.div
-            initial={{ opacity: 0, x: -56 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ ...spring }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={ease}
             viewport={{ once: true, margin: '-80px' }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5 border"
@@ -142,9 +133,9 @@ export function PropertiesSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 56 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ ...spring, delay: 0.1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ ...ease, delay: 0.15 }}
             viewport={{ once: true, margin: '-80px' }}
             className="shrink-0"
           >

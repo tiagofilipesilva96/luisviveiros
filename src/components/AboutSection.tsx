@@ -21,9 +21,7 @@ const training = [
   'Negociação Imobiliária Avançada',
 ]
 
-/* Crisp spring — arrives fast, settles cleanly, no wobble */
-const spring = { type: 'spring' as const, stiffness: 300, damping: 30, mass: 0.8 }
-const ease   = { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }
+const ease = { duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] as const }
 
 export function AboutSection() {
   return (
@@ -31,19 +29,15 @@ export function AboutSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* Image — slides in from left, no 3D rotation */}
+          {/* Image — subtle fade + gentle rise */}
           <motion.div
-            initial={{ opacity: 0, x: -72, scale: 0.94 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ ...spring, delay: 0.04 }}
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ ...ease }}
             viewport={{ once: true, margin: '-80px' }}
           >
             <div className="relative">
-              <motion.div
-                className="relative rounded-3xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:mx-0"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:mx-0">
                 <img
                   src="https://brumjtydtlxhooqrrsch.supabase.co/storage/v1/object/public/avatars/profile-photo_1d70f6bb-b9cb-4614-9bfb-120f1604ec34.jpg"
                   alt="Luís Viveiros - Consultor Imobiliário Century 21"
@@ -59,9 +53,9 @@ export function AboutSection() {
                 />
                 <motion.div
                   className="absolute bottom-6 left-6 right-6"
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ ...ease, delay: 0.35 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ ...ease, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
                   <p className="text-white font-bold text-xl">Luís Viveiros</p>
@@ -69,15 +63,15 @@ export function AboutSection() {
                     Consultor Imobiliário · Century 21
                   </p>
                 </motion.div>
-              </motion.div>
+              </div>
 
-              {/* Floating CENTURION badge */}
+              {/* CENTURION badge */}
               <motion.div
-                className="absolute -right-4 top-12 glass-card rounded-2xl p-5 shadow-xl hidden lg:block"
-                style={{ background: 'white', boxShadow: '0 20px 50px rgba(0,0,0,0.12)', border: '1px solid oklch(0.92 0.02 85)' }}
-                initial={{ opacity: 0, scale: 0.75, x: 24 }}
-                whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                transition={{ ...spring, delay: 0.25 }}
+                className="absolute -right-4 top-12 rounded-2xl p-5 shadow-xl hidden lg:block"
+                style={{ background: 'white', boxShadow: '0 16px 48px rgba(0,0,0,0.10)', border: '1px solid oklch(0.92 0.02 85)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ ...ease, delay: 0.35 }}
                 viewport={{ once: true }}
               >
                 <div className="flex items-center gap-3 mb-3">
@@ -90,17 +84,17 @@ export function AboutSection() {
                     <p className="text-xs text-muted-foreground">Top Producer</p>
                   </div>
                 </div>
-                <div className="h-1 rounded-full" style={{ background: 'linear-gradient(to right, oklch(0.85 0.1 85), oklch(0.7 0.13 80))' }} />
+                <div className="h-px rounded-full" style={{ background: 'linear-gradient(to right, oklch(0.85 0.1 85), oklch(0.7 0.13 80))' }} />
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Content — slides in from right */}
+          {/* Content — delayed fade */}
           <motion.div
             className="space-y-8"
-            initial={{ opacity: 0, x: 72 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ ...spring, delay: 0.08 }}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ ...ease, delay: 0.12 }}
             viewport={{ once: true, margin: '-80px' }}
           >
             <div>
@@ -136,10 +130,10 @@ export function AboutSection() {
                 <motion.div
                   key={i}
                   className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: 32 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ ...ease, delay: 0.1 + i * 0.07 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.6, ease: 'easeOut', delay: 0.18 + i * 0.08 }}
+                  viewport={{ once: true, margin: '-40px' }}
                 >
                   <CheckCircle2 className="size-5 shrink-0 mt-0.5" style={{ color: 'oklch(0.75 0.12 85)' }} />
                   <span className="text-foreground/80 text-sm">{achievement}</span>
@@ -150,9 +144,9 @@ export function AboutSection() {
             {/* Awards & Training */}
             <motion.div
               className="grid grid-cols-2 gap-6 pt-4"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ ...ease, delay: 0.18 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.65, ease: 'easeOut', delay: 0.22 }}
               viewport={{ once: true }}
             >
               <div>
@@ -174,9 +168,9 @@ export function AboutSection() {
             {/* CTA */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 pt-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ ...ease, delay: 0.22 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.65, ease: 'easeOut', delay: 0.28 }}
               viewport={{ once: true }}
             >
               <MagneticButton
