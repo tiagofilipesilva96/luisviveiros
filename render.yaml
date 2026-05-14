@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: luis-viveiros
+    runtime: static
+    buildCommand: npm run build
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.webp
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /favicon.svg
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
