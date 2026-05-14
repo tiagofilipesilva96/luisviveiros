@@ -89,8 +89,7 @@ export function ContactSection() {
               >
                 {card.icon}
               </div>
-              <h3 className={`font-semibold mb-2 ${card.dark ? "text-white" : "text-foreground"}`}>{card.title}</h3>
-              <p className={`text-sm mb-3 ${card.dark ? "text-white/50" : "text-muted-foreground"}`}>{card.sub}</p>
+              <h3 className={`font-semibold mb-3 ${card.dark ? "text-white" : "text-foreground"}`}>{card.title}</h3>
               <span className="text-sm font-semibold" style={{ color: card.valueColor }}>{card.value}</span>
             </motion.a>
           ))}
