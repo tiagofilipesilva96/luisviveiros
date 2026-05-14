@@ -87,10 +87,10 @@ export function HeroSection() {
         }}
       />
 
-      {/* Layer 2 — Content (mid: 0.18x) */}
+      {/* Layer 2 — Content */}
       <div
         ref={contentRef}
-        className="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full will-change-transform"
+        className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 pt-28 pb-40 sm:pb-44 md:py-32 w-full will-change-transform"
       >
         <motion.div
           className="max-w-2xl"
@@ -101,7 +101,7 @@ export function HeroSection() {
           {/* Badge */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-8 border"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold tracking-widest uppercase mb-5 sm:mb-8 border"
             style={{
               background: 'rgba(180, 140, 60, 0.15)',
               borderColor: 'rgba(180, 140, 60, 0.4)',
@@ -120,7 +120,7 @@ export function HeroSection() {
           {/* Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white mb-4 sm:mb-6"
           >
             O Imóvel{' '}
             <motion.span
@@ -139,7 +139,7 @@ export function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-white/70 leading-relaxed mb-10 max-w-lg"
+            className="text-base sm:text-lg md:text-xl text-white/70 leading-relaxed mb-7 sm:mb-10 max-w-lg"
           >
             Licenciado em Gestão de Empresas, com mais de 20 anos de experiência
             no mercado imobiliário. Top Producer e Consultor Imobiliário
@@ -209,15 +209,15 @@ export function HeroSection() {
             {stats.map((stat, i) => (
               <motion.div
                 key={i}
-                className="flex flex-col items-center py-6 px-4 border-r last:border-r-0"
+                className="flex flex-col items-center py-3 sm:py-5 px-2 sm:px-4 border-r last:border-r-0"
                 style={{ borderColor: 'rgba(180,140,60,0.15)' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.95 + i * 0.1 }}
               >
-                <stat.icon className="size-5 mb-2" style={{ color: 'oklch(0.85 0.1 85)' }} />
-                <span className="text-2xl font-bold text-white">{stat.value}</span>
-                <span className="text-xs text-white/50 text-center mt-0.5">{stat.label}</span>
+                <stat.icon className="size-3.5 sm:size-5 mb-1 sm:mb-2" style={{ color: 'oklch(0.85 0.1 85)' }} />
+                <span className="text-base sm:text-2xl font-bold text-white leading-tight">{stat.value}</span>
+                <span className="text-[10px] sm:text-xs text-white/50 text-center mt-0.5 leading-tight">{stat.label}</span>
               </motion.div>
             ))}
           </div>
