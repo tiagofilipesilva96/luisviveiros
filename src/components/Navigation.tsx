@@ -17,10 +17,10 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Turn opaque only when the first white block (#servicos) touches the nav bottom
-      const servicos = document.querySelector("#servicos")
-      if (servicos) {
-        const top = servicos.getBoundingClientRect().top
+      // Turn opaque when the Sobre Mim section (first white block after hero) touches the nav
+      const sobre = document.querySelector("#sobre")
+      if (sobre) {
+        const top = sobre.getBoundingClientRect().top
         setScrolled(top <= 72)
       } else {
         setScrolled(window.scrollY > 80)
