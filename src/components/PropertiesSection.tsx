@@ -128,7 +128,7 @@ export function PropertiesSection() {
               Imóveis em <span className="gold-gradient">Destaque</span>
             </h2>
             <p className="text-muted-foreground mt-3 text-base sm:text-lg max-w-lg">
-              Seleção real do meu portfólio nos Açores, atualizada a partir do site oficial Century 21.
+              Propriedades seleccionadas para quem valoriza o melhor.
             </p>
           </motion.div>
 
