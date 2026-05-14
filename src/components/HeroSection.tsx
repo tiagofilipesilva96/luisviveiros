@@ -25,9 +25,8 @@ export function HeroSection() {
 
     const tick = () => {
       const y = window.scrollY
-      // Two layers only — stats bar stays fixed (no parallax)
-      if (bgRef.current)      bgRef.current.style.transform      = `translateY(${y * 0.45}px)`
-      if (contentRef.current) contentRef.current.style.transform = `translateY(${y * 0.18}px)`
+      // Only background moves — content and buttons stay fixed
+      if (bgRef.current) bgRef.current.style.transform = `translateY(${y * 0.45}px)`
     }
 
     const onScroll = () => { raf = requestAnimationFrame(tick) }
