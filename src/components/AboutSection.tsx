@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion } from 'framer-motion'
 import { CheckCircle2, Phone, MessageCircle } from 'lucide-react'
 import { MagneticButton } from '@/components/MagneticButton'
 
@@ -22,39 +21,28 @@ const training = [
   'Negociação Imobiliária Avançada',
 ]
 
-const spring = { type: 'spring' as const, stiffness: 60, damping: 13 }
+/* Crisp spring — arrives fast, settles cleanly, no wobble */
+const spring = { type: 'spring' as const, stiffness: 300, damping: 30, mass: 0.8 }
+const ease   = { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const }
 
 export function AboutSection() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  })
-  const imageY = useTransform(scrollYProgress, [0, 1], [-40, 40])
-  const textY = useTransform(scrollYProgress, [0, 1], [30, -30])
-
   return (
-    <section
-      id="sobre"
-      ref={sectionRef}
-      className="relative py-28 bg-white overflow-hidden cv-auto"
-    >
+    <section id="sobre" className="relative py-28 bg-white overflow-hidden cv-auto">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* Image side — sweeps in from far left with parallax depth */}
+          {/* Image — slides in from left, no 3D rotation */}
           <motion.div
-            initial={{ opacity: 0, x: -120, rotateY: 18, scale: 0.9 }}
-            whileInView={{ opacity: 1, x: 0, rotateY: 0, scale: 1 }}
-            transition={{ ...spring, delay: 0.05 }}
+            initial={{ opacity: 0, x: -72, scale: 0.94 }}
+            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ ...spring, delay: 0.04 }}
             viewport={{ once: true, margin: '-80px' }}
-            style={{ y: imageY, perspective: 1000 }}
           >
             <div className="relative">
               <motion.div
                 className="relative rounded-3xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:mx-0"
-                whileHover={{ scale: 1.025 }}
-                transition={{ duration: 0.35 }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
               >
                 <img
                   src="https://brumjtydtlxhooqrrsch.supabase.co/storage/v1/object/public/avatars/profile-photo_1d70f6bb-b9cb-4614-9bfb-120f1604ec34.jpg"
@@ -71,9 +59,9 @@ export function AboutSection() {
                 />
                 <motion.div
                   className="absolute bottom-6 left-6 right-6"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.45, duration: 0.5 }}
+                  transition={{ ...ease, delay: 0.35 }}
                   viewport={{ once: true }}
                 >
                   <p className="text-white font-bold text-xl">Luís Viveiros</p>
@@ -83,21 +71,20 @@ export function AboutSection() {
                 </motion.div>
               </motion.div>
 
+              {/* Floating CENTURION badge */}
               <motion.div
                 className="absolute -right-4 top-12 glass-card rounded-2xl p-5 shadow-xl hidden lg:block"
                 style={{ background: 'white', boxShadow: '0 20px 50px rgba(0,0,0,0.12)', border: '1px solid oklch(0.92 0.02 85)' }}
-                initial={{ opacity: 0, scale: 0.7, x: 30 }}
+                initial={{ opacity: 0, scale: 0.75, x: 24 }}
                 whileInView={{ opacity: 1, scale: 1, x: 0 }}
-                transition={{ ...spring, delay: 0.3 }}
+                transition={{ ...spring, delay: 0.25 }}
                 viewport={{ once: true }}
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center text-lg font-bold"
                     style={{ background: 'linear-gradient(135deg, oklch(0.95 0.04 85), oklch(0.88 0.08 82))', color: 'oklch(0.55 0.1 75)' }}
-                  >
-                    C
-                  </div>
+                  >C</div>
                   <div>
                     <p className="text-sm font-bold text-foreground">CENTURION</p>
                     <p className="text-xs text-muted-foreground">Top Producer</p>
@@ -108,17 +95,15 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Content side — sweeps in from right */}
+          {/* Content — slides in from right */}
           <motion.div
-            style={{ y: textY }}
             className="space-y-8"
+            initial={{ opacity: 0, x: 72 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ ...spring, delay: 0.08 }}
+            viewport={{ once: true, margin: '-80px' }}
           >
-            <motion.div
-              initial={{ opacity: 0, x: 100, rotate: 1.5 }}
-              whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-              transition={{ ...spring, delay: 0.1 }}
-              viewport={{ once: true, margin: '-80px' }}
-            >
+            <div>
               <div
                 className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-6 border"
                 style={{ background: 'oklch(0.98 0.02 85)', borderColor: 'oklch(0.85 0.08 85)', color: 'oklch(0.55 0.1 75)' }}
@@ -138,12 +123,12 @@ export function AboutSection() {
                 própria casa.
               </p>
 
-              <p className="text-muted-foreground leading-relaxed mb-8">
+              <p className="text-muted-foreground leading-relaxed">
                 <span className="font-semibold text-foreground">Top Producer</span> e{' '}
                 <span className="font-semibold text-foreground">Consultor Imobiliário "Centurião"</span>,
                 o mais alto reconhecimento da marca Century21.
               </p>
-            </motion.div>
+            </div>
 
             {/* Achievements */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -151,9 +136,9 @@ export function AboutSection() {
                 <motion.div
                   key={i}
                   className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: 60 }}
+                  initial={{ opacity: 0, x: 32 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ ...spring, delay: 0.12 + i * 0.09 }}
+                  transition={{ ...ease, delay: 0.1 + i * 0.07 }}
                   viewport={{ once: true, margin: '-60px' }}
                 >
                   <CheckCircle2 className="size-5 shrink-0 mt-0.5" style={{ color: 'oklch(0.75 0.12 85)' }} />
@@ -165,9 +150,9 @@ export function AboutSection() {
             {/* Awards & Training */}
             <motion.div
               className="grid grid-cols-2 gap-6 pt-4"
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              transition={{ ...ease, delay: 0.18 }}
               viewport={{ once: true }}
             >
               <div>
@@ -189,9 +174,9 @@ export function AboutSection() {
             {/* CTA */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 pt-4"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+              transition={{ ...ease, delay: 0.22 }}
               viewport={{ once: true }}
             >
               <MagneticButton
@@ -209,6 +194,7 @@ export function AboutSection() {
               </MagneticButton>
             </motion.div>
           </motion.div>
+
         </div>
       </div>
     </section>

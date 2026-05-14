@@ -5,13 +5,14 @@ import { MapPin, Bed, Bath, Square, ArrowRight, Phone, MessageCircle } from 'luc
 import { MagneticButton } from '@/components/MagneticButton'
 import { featuredProperties, type Property } from '@/data/properties'
 
-const spring = { type: 'spring' as const, stiffness: 60, damping: 13 }
+const spring = { type: 'spring' as const, stiffness: 280, damping: 28, mass: 0.8 }
 
+/* No rotation — purely translate + scale for GPU compositing */
 const cardFrom = (i: number) => {
   const col = i % 3
-  if (col === 0) return { x: -100, opacity: 0, rotate: -4 }
-  if (col === 2) return { x: 100, opacity: 0, rotate: 4 }
-  return { y: 90, opacity: 0, scale: 0.84 }
+  if (col === 0) return { x: -72, opacity: 0 }
+  if (col === 2) return { x:  72, opacity: 0 }
+  return { y: 72, opacity: 0, scale: 0.88 }
 }
 
 function PropertyCard({ property, index }: { property: Property; index: number }) {
@@ -26,8 +27,8 @@ function PropertyCard({ property, index }: { property: Property; index: number }
       className="property-card rounded-3xl overflow-hidden bg-white border cursor-pointer block"
       style={{ borderColor: 'oklch(0.92 0 0)' }}
       initial={cardFrom(index)}
-      whileInView={{ x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 }}
-      transition={{ ...spring, delay: index * 0.09 }}
+      whileInView={{ x: 0, y: 0, scale: 1, opacity: 1 }}
+      transition={{ ...spring, delay: index * 0.07 }}
       viewport={{ once: true, margin: '-60px' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -38,8 +39,8 @@ function PropertyCard({ property, index }: { property: Property; index: number }
           src={property.image}
           alt={property.title}
           className="w-full h-full object-cover"
-          animate={{ scale: hovered ? 1.07 : 1 }}
-          transition={{ duration: 0.4 }}
+          animate={{ scale: hovered ? 1.06 : 1 }}
+          transition={{ duration: 0.35 }}
           loading="lazy"
           decoding="async"
         />
@@ -62,7 +63,7 @@ function PropertyCard({ property, index }: { property: Property; index: number }
           <div className="absolute top-4 right-4">
             <span
               className="px-3 py-1 rounded-full text-xs font-medium"
-              style={{ background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(10px)', color: 'white', border: '1px solid rgba(255,255,255,0.25)' }}
+              style={{ background: 'rgba(255,255,255,0.18)', backdropFilter: 'blur(8px)', color: 'white', border: '1px solid rgba(255,255,255,0.25)' }}
             >
               {property.tag}
             </span>
@@ -87,21 +88,9 @@ function PropertyCard({ property, index }: { property: Property; index: number }
         </div>
 
         <div className="flex items-center flex-wrap gap-x-4 gap-y-2 pt-4 border-t" style={{ borderColor: 'oklch(0.95 0 0)' }}>
-          {property.beds !== undefined && (
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <Bed className="size-3.5" /><span>{property.beds} quartos</span>
-            </div>
-          )}
-          {property.baths !== undefined && (
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <Bath className="size-3.5" /><span>{property.baths} WC</span>
-            </div>
-          )}
-          {property.area !== undefined && (
-            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <Square className="size-3.5" /><span>{property.area} m²</span>
-            </div>
-          )}
+          {property.beds  !== undefined && <div className="flex items-center gap-1.5 text-xs text-muted-foreground"><Bed    className="size-3.5" /><span>{property.beds} quartos</span></div>}
+          {property.baths !== undefined && <div className="flex items-center gap-1.5 text-xs text-muted-foreground"><Bath   className="size-3.5" /><span>{property.baths} WC</span></div>}
+          {property.area  !== undefined && <div className="flex items-center gap-1.5 text-xs text-muted-foreground"><Square className="size-3.5" /><span>{property.area} m²</span></div>}
         </div>
 
         <div className="mt-4 flex gap-2">
@@ -135,9 +124,9 @@ export function PropertiesSection() {
       <div className="max-w-7xl mx-auto px-5 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-14 gap-6">
           <motion.div
-            initial={{ opacity: 0, x: -80, rotate: -2 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ type: 'spring', stiffness: 65, damping: 14 }}
+            initial={{ opacity: 0, x: -56 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ ...spring }}
             viewport={{ once: true, margin: '-80px' }}
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-5 border"
@@ -153,16 +142,15 @@ export function PropertiesSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 80, rotate: 2 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ type: 'spring', stiffness: 65, damping: 14, delay: 0.12 }}
+            initial={{ opacity: 0, x: 56 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ ...spring, delay: 0.1 }}
             viewport={{ once: true, margin: '-80px' }}
             className="shrink-0"
           >
             <Link to="/imoveis" className="block">
               <MagneticButton variant="dark">
-                Ver todos os imóveis
-                <ArrowRight className="size-4" />
+                Ver todos os imóveis <ArrowRight className="size-4" />
               </MagneticButton>
             </Link>
           </motion.div>

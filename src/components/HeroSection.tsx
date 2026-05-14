@@ -26,7 +26,7 @@ export function HeroSection() {
     const tick = () => {
       const y = window.scrollY
       // Only background moves — content and buttons stay fixed
-      if (bgRef.current) bgRef.current.style.transform = `translateY(${y * 0.45}px)`
+      if (bgRef.current) bgRef.current.style.transform = `translate3d(0,${y * 0.45}px,0)`
     }
 
     const onScroll = () => { raf = requestAnimationFrame(tick) }
